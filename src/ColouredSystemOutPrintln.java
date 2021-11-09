@@ -57,15 +57,15 @@ public class ColouredSystemOutPrintln {
 
     public static void main(String[] args) {
 
-//        System.out.println("\n  Default text\n");
-//
-//        for (String fg : FOREGROUNDS) {
-//            for (String bg : BACKGROUNDS)
-//                System.out.print(fg + bg + "  TEST  ");
-//            System.out.println(ANSI_RESET);
-//        }
-//
-//        System.out.println(ANSI_RESET + "\n  Back to default.\n");
+        System.out.println("\n  Default text\n");
+
+        for (String fg : FOREGROUNDS) {
+            for (String bg : BACKGROUNDS)
+                System.out.print(fg + bg + "  TEST  ");
+            System.out.println(ANSI_RESET);
+        }
+
+        System.out.println(ANSI_RESET + "\n  Back to default.\n");
 
         System.out.println();
         System.out.println("-------------------------------------------------------------------------------");
