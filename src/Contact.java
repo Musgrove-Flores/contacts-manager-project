@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+
 public class Contact {
 
     private String name;
     private int phoneNumber;
+
 
 
     public void Contact(String name, int phoneNumber) {
@@ -24,4 +27,5 @@ public class Contact {
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
 }
