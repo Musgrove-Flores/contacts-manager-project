@@ -3,7 +3,6 @@ public class Contact {
     private String name;
     private int phoneNumber;
 
-    public Contact() {}
 
     public void Contact(String name, int phoneNumber) {
         this.name = name;
@@ -16,5 +15,13 @@ public class Contact {
 
     public int getPhoneNumber() {
         return this.phoneNumber;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

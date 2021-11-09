@@ -3,13 +3,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class fileIO extends Contact {
-    private int userPhoneNumber;
+public class fileIO {
 
-    public fileIO(String userContact, int userPhoneNumber) {
-        super(userContact;
-        return this.userPhoneNumber) = userPhoneNumber;
-    }
 
     public static void main(String[] args) throws IOException {
 
@@ -29,6 +24,9 @@ public class fileIO extends Contact {
         if(Files.notExists(contactFile)){
             Files.createFile(contactFile);
         }
+
+//        Path
+
 
     }
 
