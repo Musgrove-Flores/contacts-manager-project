@@ -34,6 +34,7 @@ public class fileIO {
         System.out.println("Files.exists(contactsListPath) = " + Files.exists(contactListPath));
 
         List<String> mainMenuList = Arrays.asList("View Contacts", "Add a New Contact", "Search A Contact By Name", "Delete An Existing Contact", "Exit");
+        //menuList should be a method
 
         Files.write(contactListPath, mainMenuList);
         System.out.println();
@@ -62,6 +63,7 @@ public class fileIO {
         switch (userChoice) {
             case 1:
                 System.out.println("View Contacts");
+
                 break;
 
                 case 2:
