@@ -8,7 +8,11 @@ import java.util.*;
 
 public class fileIO {
 
-
+    public void getContactsList() {
+            for(int i = 5; i < printList.size(); i++){
+                System.out.println((i + 1) + ": " + printList.get(i));
+            }
+        }
 
     public static void main(String[] args) throws IOException {
         ArrayList<Contact> myContacts;
@@ -42,6 +46,7 @@ public class fileIO {
         List<String> printList = Files.readAllLines(contactListPath);
         System.out.println("printList = " + printList);
 
+
         for (int i = 0; i < printList.size(); i++) {
             System.out.println((i + 1) + ": " + printList.get(i));
         }
@@ -55,6 +60,15 @@ public class fileIO {
         for(int i = 0; i < printList.size(); i++){
             System.out.println((i + 1) + ": " + printList.get(i));
         }
+
+//
+
+
+
+
+//        public void addContact(Contact contacat) {
+//
+//        }
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter An Option: [1, 2, 3, 4, or 5]\n");
