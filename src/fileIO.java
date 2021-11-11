@@ -8,11 +8,18 @@ import java.util.*;
 
 public class fileIO {
 
-    public void getContactsList() {
-            for(int i = 5; i < printList.size(); i++){
-                System.out.println((i + 1) + ": " + printList.get(i));
-            }
-        }
+//<<<<<<< HEAD
+////    public fileIO(String userContact, int userPhoneNumber) {
+////        super(userContact);
+////        return this.userPhoneNumber = userPhoneNumber;
+////    }
+//=======
+//    public void getContactsList() {
+//            for(int i = 5; i < printList.size(); i++){
+//                System.out.println((i + 1) + ": " + printList.get(i));
+//            }
+//        }
+//>>>>>>> 4bfcc36f9620f885b71ce9da4f1e3e65fa8586bc
 
     public static void main(String[] args) throws IOException {
         ArrayList<Contact> myContacts;
