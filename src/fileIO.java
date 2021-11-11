@@ -40,8 +40,9 @@ public class fileIO {
     public static void searchByName() {}
 
     public static void deleteContact() {}
-
-    public static void main(String[] args) throws IOException {
+    public static void getMenu() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Enter An Option: [1, 2, 3, 4, or 5]\n");
         ArrayList<Contact> myContacts;
         String directory = "./src/data";
         String fileName = "contacts.txt";
@@ -49,7 +50,7 @@ public class fileIO {
         Path contactDirectory = Paths.get(directory);
         Path contactFile = Paths.get(directory, fileName);
 
-        System.out.println(contactFile);
+//        System.out.println(contactFile);
 
         if (Files.notExists(contactDirectory)) {
             Files.createDirectories(contactDirectory); //a plural method worked with one
@@ -61,8 +62,8 @@ public class fileIO {
         }
 
         Path contactListPath = Paths.get(directory, fileName);
-        System.out.println("contactListPath = " + contactListPath);
-        System.out.println("Files.exists(contactsListPath) = " + Files.exists(contactListPath));
+//        System.out.println("contactListPath = " + contactListPath);
+//        System.out.println("Files.exists(contactsListPath) = " + Files.exists(contactListPath));
 
         List<String> mainMenuList = Arrays.asList("View Contacts", "Add a New Contact", "Search A Contact By Name", "Delete An Existing Contact", "Exit");
         //menuList should be a method
@@ -71,56 +72,71 @@ public class fileIO {
         System.out.println();
 
         List<String> printList = Files.readAllLines(contactListPath);
-        System.out.println("printList = " + printList);
+//        System.out.println("printList = " + printList);
 
 
         for (int i = 0; i < printList.size(); i++) {
-            System.out.println((i + 1) + ": " + printList.get(i));
+            System.out.println((i + 1) + ": " + printList.get(i)); //first print with numbers
         }
 
 
         System.out.println();
 
         printList = Files.readAllLines(contactListPath);
-        System.out.println(printList);
+//        System.out.println(printList);
 
         for (int i = 0; i < printList.size(); i++) {
-            System.out.println((i + 1) + ": " + printList.get(i));
+//            System.out.println((i + 1) + ": " + printList.get(i));
         }
+    }
+
+    public static void main(String[] args) throws IOException {
+
+
 
 
 
         Scanner scanner = new Scanner(System.in);
+        getMenu();
         System.out.println("Enter An Option: [1, 2, 3, 4, or 5]\n");
+
         int userChoice = scanner.nextInt();
 
-        switch (userChoice) {
-            case 1:
-                System.out.println("View Contacts");
-                getContactsList();
-                break;
+        boolean confirm;
 
-            case 2:
-                System.out.println("Add A New Contact");
-                addContact();
-                break;
+        do {
+            switch (userChoice) {
+                case 1:
+                    System.out.println("View Contacts");
+                    getContactsList();
+                    break;
 
-            case 3:
-                System.out.println("Search A Contact By Name");
-                searchByName();
-                break;
+                case 2:
+                    System.out.println("Add A New Contact");
+                    addContact();
+                    break;
 
-            case 4:
-                System.out.println("Delete An Existing Contact");
-                deleteContact();
-                break;
+                case 3:
+                    System.out.println("Search A Contact By Name");
+                    searchByName();
+                    break;
 
-            case 5:
-                System.out.println("Exit");
-                break;
+                case 4:
+                    System.out.println("Delete An Existing Contact");
+                    deleteContact();
+                    break;
 
 
-        }
+                case 5:
+                    System.out.println("Exit");
+                    break;
+
+
+            }
+            System.out.println("Would you like to see the menu? [y, n]");
+            confirm = scanner.nextLine().equalsIgnoreCase("y");
+        } while (confirm);
+
 //        public void viewContact() {
 //            System.out.println("Contact List");
 //            for (int i = 0; i < this.myContacts.size(); i++) {
