@@ -6,10 +6,10 @@ import java.nio.file.Paths;
 public class fileIO extends Contact {
     private int userPhoneNumber;
 
-    public fileIO(String userContact, int userPhoneNumber) {
-        super(userContact;
-        return this.userPhoneNumber) = userPhoneNumber;
-    }
+//    public fileIO(String userContact, int userPhoneNumber) {
+//        super(userContact);
+//        return this.userPhoneNumber = userPhoneNumber;
+//    }
 
     public static void main(String[] args) throws IOException {
 
