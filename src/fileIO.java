@@ -8,11 +8,38 @@ import java.util.*;
 
 public class fileIO {
 
-    public void getContactsList() {
-            for(int i = 5; i < printList.size(); i++){
-                System.out.println((i + 1) + ": " + printList.get(i));
-            }
-        }
+    public static void getContactsList() {
+
+    }
+
+    public static void addContact() {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Contact> contacts = new ArrayList<>();
+        System.out.println("Enter Contact Name.\n");
+        String newContact = scanner.nextLine();
+        System.out.println("Please enter phone number.\n");
+        double newNumber = scanner.nextDouble();
+//        for (Contact contact : contacts) {
+//            String adding = newContact;
+//            adding = contact.getName();
+//                        for(int i = 5; i < adding.length(); i++){
+//                System.out.println((i + 1) + ": " + adding.length());
+//            }
+//        }
+//        for (Contact contact : contacts) {
+//            double nums = newNumber;
+//            nums = contact.getPhoneNumber();
+//            for(int i = 5; i < nums; i++){
+//                System.out.println((i + 1) + ": " + nums);
+//            }
+//            contact.setName();
+//            contact.setPhoneNumber((int) newNumber);
+//        }
+    }
+
+    public static void searchByName() {}
+
+    public static void deleteContact() {}
 
     public static void main(String[] args) throws IOException {
         ArrayList<Contact> myContacts;
@@ -57,18 +84,11 @@ public class fileIO {
         printList = Files.readAllLines(contactListPath);
         System.out.println(printList);
 
-        for(int i = 0; i < printList.size(); i++){
+        for (int i = 0; i < printList.size(); i++) {
             System.out.println((i + 1) + ": " + printList.get(i));
         }
 
-//
 
-
-
-
-//        public void addContact(Contact contacat) {
-//
-//        }
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter An Option: [1, 2, 3, 4, or 5]\n");
@@ -77,25 +97,27 @@ public class fileIO {
         switch (userChoice) {
             case 1:
                 System.out.println("View Contacts");
-
+                getContactsList();
                 break;
 
-                case 2:
+            case 2:
                 System.out.println("Add A New Contact");
+                addContact();
                 break;
 
-                case 3:
+            case 3:
                 System.out.println("Search A Contact By Name");
+                searchByName();
                 break;
 
-                case 4:
+            case 4:
                 System.out.println("Delete An Existing Contact");
+                deleteContact();
                 break;
 
-                case 5:
+            case 5:
                 System.out.println("Exit");
                 break;
-
 
 
         }
@@ -106,12 +128,6 @@ public class fileIO {
 //            }
 //        }
 //
-//        public static void addContact() {
-//            System.out.println("Enter Contact Name.\n");
-//            String newContact = scanner.nextLine();
-//
-//
-//        }
 
 
     }
