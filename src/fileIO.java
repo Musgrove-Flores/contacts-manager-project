@@ -66,13 +66,13 @@ public class fileIO {
                 break;
             }
 
+Files.write(contactListPath, List.of(nameAndNumber), StandardOpenOption.APPEND);
 
+            printList = Files.readAllLines(contactListPath);
 
-
-
-
-
-
+            for (int i = 5; i < printList.size(); i++) {
+                System.out.println((i + 1) + ": " + printList.get(i));
+            }
 
 //        for (Contact contact : contacts) {
 //            String adding = newContact;
@@ -93,8 +93,30 @@ public class fileIO {
         }
 
         public static void searchByName () {
+        try {
+            Scanner contactlist = new Scanner("/Users/dezmonemusgrove/IdeaProjects/contacts-manager-project/src/data/contacts.txt");
+            Scanner looking = new Scanner(System.in);
 
+            boolean found = false;
+            int counter = 0;
 
+            System.out.println("Enter the name");
+            String name =looking.nextLine();
+            System.out.println();
+
+            while (contactlist.hasNext()){
+
+                String currentName =  contactlist.nextLine();
+
+                if (currentName.equalsIgnoreCase(name)) {
+                    found = true;
+                    System.out.println("Here it is!" + currentName);
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
         }
 
         public static void deleteContact () {
