@@ -7,26 +7,52 @@ import java.sql.SQLOutput;
 import java.util.*;
 
 public class fileIO {
+    private String myPhone;
+    private ArrayList<Contact> myContacts;
+    private static Scanner scanner = new Scanner(System.in);
+    private static fileIO mobilePhone;
 
-//Getting contact list method:
+    public fileIO(String myPhone) {
+        this.myPhone = myPhone;
+        this.myContacts = new ArrayList<Contact>();
+    }
 
-    public static void getContactsList() throws IOException {
-        String directory = "./src/data";
-        String fileName = "contacts.txt";
-        Path contactDirectory = Paths.get(directory);
-        Path contactFile = Paths.get(directory, fileName);
-        Path contactListPath = Paths.get(directory, fileName);
-        List<String> printList = Files.readAllLines(contactListPath);
+// //Getting contact list method:
 
-        for (int i = 5; i < printList.size(); i++) {
-            System.out.println((i + 1) + " | " + printList.get(i));
-        }
+//     public static void getContactsList() throws IOException {
+//         String directory = "./src/data";
+//         String fileName = "contacts.txt";
+//         Path contactDirectory = Paths.get(directory);
+//         Path contactFile = Paths.get(directory, fileName);
+// <<<<<<< flores-contact-project
+
+// //        Path contactListPath = Paths.get(directory, fileName);
+// //        List<String> printList = Files.readAllLines(contactListPath);
+// //
+// //        for (int i = 0; i < printList.size(); i++) {
+// //            System.out.println((i + 1) + " | " + printList.get(i));
+// //
+// //
+// //
+// //        }
+// =======
+//         Path contactListPath = Paths.get(directory, fileName);
+//         List<String> printList = Files.readAllLines(contactListPath);
+
+//         for (int i = 5; i < printList.size(); i++) {
+//             System.out.println((i + 1) + " | " + printList.get(i));
+//         }
+// >>>>>>> main
     }
 
 //Adding contact method:
 
-    public static void addContact() throws IOException {
-        Scanner scanner = new Scanner(System.in);
+// <<<<<<< flores-contact-project
+//     public static boolean addContact(Contact contacts) throws IOException {
+// =======
+//     public static void addContact() throws IOException {
+// >>>>>>> main
+//         Scanner scanner = new Scanner(System.in);
 
         String directory = "./src/data";
         String fileName = "contacts.txt";
@@ -35,7 +61,10 @@ public class fileIO {
         Path contactListPath = Paths.get(directory, fileName);
         List<String> printList = Files.readAllLines(contactListPath);
 
-        ArrayList<Contact> contacts = new ArrayList<>();
+// <<<<<<< flores-contact-project
+// =======
+//         ArrayList<Contact> contacts = new ArrayList<>();
+// >>>>>>> main
 
         System.out.println("Enter Contact Name.\n");
         String newContact = scanner.nextLine();
@@ -86,7 +115,13 @@ public class fileIO {
 //            contact.setName();
 //            contact.setPhoneNumber((int) newNumber);
 //        }
-    }
+// <<<<<<< flores-contact-project
+//         return false;
+
+// }
+// =======
+//     }
+// >>>>>>> main
 
     public static void searchByName() {
         try {
@@ -190,11 +225,18 @@ public class fileIO {
             int userChoice = scanner.nextInt();
             String userAnswer1 = scanner.nextLine();
 
-            switch (userChoice) {
-                case 1:
-                    System.out.println("View Contacts");
-                    getContactsList();
-                    break;
+// <<<<<<< flores-contact-project
+//                     case 2:
+//                         System.out.println("Add A New Contact");
+//                         addNewContact();
+//                         break;
+// =======
+//             switch (userChoice) {
+//                 case 1:
+//                     System.out.println("View Contacts");
+//                     getContactsList();
+//                     break;
+// >>>>>>> main
 
                 case 2:
                     System.out.println("Add A New Contact");
@@ -224,18 +266,46 @@ public class fileIO {
             confirm = userAnswer2.equalsIgnoreCase("y");
 
 
-            if (confirm) {
-                getMenu();
-            } else {
-                System.out.println("Bye Bye!");
-            }
+// <<<<<<< flores-contact-project
 
+//             } while (confirm);
+// //
+//         }
+//         private static void addNewContact() throws IOException {
+//             System.out.println("Enter Contact Name.\n");
+//             String newName = scanner.nextLine();
+//             System.out.println("Please enter phone number.\n");
+//             String newNumber = scanner.nextLine(); // had to put number as a string instead of double to work with List<String> printList on line 39.
+//             Contact newContact = Contact.createContact(newName, newNumber);
+// =======
+//             if (confirm) {
+//                 getMenu();
+//             } else {
+//                 System.out.println("Bye Bye!");
+//             }
+// >>>>>>> main
+
+            try {
+                if (addContact(newContact)) {
+                    System.out.println("New Contact is Added: " + newName + newNumber );
+
+                }else{
+                    System.out.println("This contact is already on file: " + newName);
+                }
+            }catch(Exception e){
+                System.out.println(e.toString());
+
+            }
 
         } while (confirm);
 
 
-//
-    }
+// <<<<<<< flores-contact-project
+//         }
+// =======
+// //
+//     }
+// >>>>>>> main
 
 }
 
