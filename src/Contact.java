@@ -3,11 +3,12 @@ import java.util.ArrayList;
 public class Contact {
 
     private String name;
-    private int phoneNumber;
+    private String phoneNumber;
 
 
 
-    public void Contact(String name, int phoneNumber) {
+
+    public Contact(String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
     }
@@ -16,7 +17,7 @@ public class Contact {
         return this.name;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return this.phoneNumber;
     }
 
@@ -24,8 +25,29 @@ public class Contact {
         this.name = name;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    public static Contact createContact(String name, String phoneNumber){
+        return new Contact(name, phoneNumber);
 
+    }
+    ArrayList<String> contactList = new ArrayList<String>();
+
+    public ArrayList<String> getContactList() {
+        return contactList;
+    }
+
+    public void setContact(String name) {
+        contactList.add(name);
+
+    }
+
+    public void printContactList() {
+        System.out.println("Your contact list: " + contactList.size());
+        for(int i = 0; i < contactList.size(); i++){
+            System.out.println(i + " - " + contactList.get(i));
+        }
+
+    }
 }
