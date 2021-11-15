@@ -43,11 +43,12 @@ public class Contact {
 
     }
 
-    public void printContactList() {
+    public int printContactList() {
         System.out.println("Your contact list: " + contactList.size());
         for(int i = 0; i < contactList.size(); i++){
             System.out.println(i + " - " + contactList.get(i));
         }
 
+        return contactList.size();
     }
 }
