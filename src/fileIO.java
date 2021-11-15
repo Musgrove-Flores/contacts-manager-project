@@ -8,7 +8,7 @@ import java.util.*;
 
 public class fileIO {
     private String myPhone;
-    private static ArrayList<Contact> myContacts;
+    private static ArrayList<String> myContact;
     private static Scanner scanner = new Scanner(System.in);
 //    private static fileIO mobilePhone;
 
@@ -20,28 +20,34 @@ public class fileIO {
 
 // //Getting contact list method:
 
-    public static void getContactsList()  {
+    public static void getContactsList() throws IOException {
         String directory = "./src/data";
         String fileName = "contacts.txt";
-        Path contactDirectory = Paths.get(directory);
-        Path contactFile = Paths.get(directory, fileName);
+//        Path contactDirectory = Paths.get(directory);
+//        Path contactFile = Paths.get(directory, fileName);
+
+        Path contactListPath = Paths.get(directory, fileName);
+
+        List<String> getContacts = Files.readAllLines(contactListPath);
 
 
 
-        for(Contact contact: myContacts){
-            System.out.print(contact.printContactList());
-        }
 
-//        try {
-//            for(int i = 0; i < myContacts.size(); i++){
-//                System.out.println(( i + 1) + " . " + myContacts.get(i).getName() +
-//                        " -> " + myContacts.get(i).getPhoneNumber());
-//
-//            }
-//
-//
-//        } catch(Exception e) {
-//            e.printStackTrace();
+//        for(Contact contact: myContacts){
+//            System.out.print(contact.printContactList());
+//        }
+
+        try {
+
+
+            for (int i = 0; i < getContacts.size(); i++) {
+                System.out.println((i + 1) + " . " + getContacts.get(i));
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
 
 
         }
@@ -64,91 +70,40 @@ public class fileIO {
 //        }
 
 
-
 //Adding contact method:
+    }
+    public static void addNewContact() throws IOException {
+        String directory = "./src/data";
+        String fileName = "contacts.txt";
+//        Path contactDirectory = Paths.get(directory);
+//        Path contactFile = Paths.get(directory, fileName);
+        Path contactListPath = Paths.get(directory, fileName);
+        List<String> myContacts = Files.readAllLines(contactListPath);
+        ArrayList<Contact> addContactList = new ArrayList<>();
 
 
+        System.out.println("Enter Contact Name.\n");
+        String newName = scanner.next();
+        System.out.println("Please enter phone number.\n");
+        String newNumber = scanner.next(); // had to put number as a string instead of double to work with List<String> printList on line 39.
+        String newContact = newName + " | " + newNumber;
+//        myContacts.add(newContact);
 
 
-        public static boolean addNewContact(Contact contacts) throws IOException {
-
-            Scanner scanner = new Scanner(System.in);
-
-//            String directory = "./src/data";
-//            String fileName = "contacts.txt";
-//            Path contactDirectory = Paths.get(directory);
-//            Path contactFile = Paths.get(directory, fileName);
-//            Path contactListPath = Paths.get(directory, fileName);
-//            List<String> printList = Files.readAllLines(contactListPath);
-//
-//
-//            ArrayList<Contact> myContacts = new ArrayList<Contact>();
-
-//
-//            System.out.println("Enter Contact Name.\n");
-//            String newContact = scanner.nextLine();
-//            System.out.println("Please enter phone number.\n");
-//            String newNumber = scanner.nextLine(); // had to put number as a string instead of double to work with List<String> printList on line 39.
-//            String nameAndNumber = newContact + " | " + newNumber;
-//
-//
-//
-//
-//
-//            for (int i = 0; i < printList.size(); i++) {
-//                if (Files.notExists(contactDirectory)) {
-//                    Files.createDirectories(contactDirectory); //a plural method worked with one
-////            Files.createDirectory(contactDirectory);
-//                }
-//
-//                if (Files.notExists(contactFile)) {
-//                    Files.createFile(contactFile);
-//                    System.out.printf("Name: %s%nNumber: %s%n", newContact, newNumber);
-//
-//
-//                    System.out.println(nameAndNumber);
-//
-//
-//                } else if (printList.contains(newContact) && printList.contains(newNumber)) {
-//                    System.out.println("Sorry, that number is already in your contacts!");
-//
-//                    break;
-//                }
-//
-//
-//            }
-//            return myContacts.add(Contact.createContact(newContact, newNumber));
-//        }
-
-
-//
-//            Files.write(contactListPath, List.of(nameAndNumber), StandardOpenOption.APPEND);
-//
-//            printList = Files.readAllLines(contactListPath);
-//
-//            for (int i = 5; i < printList.size(); i++) {
-//                System.out.println((i + 1) + ": " + printList.get(i));
-//            }
-
-//        for (Contact contact : contacts) {
-//            String adding = newContact;
-//            adding = contact.getName();
-//                        for(int i = 5; i < adding.length(); i++){
-//                System.out.println((i + 1) + ": " + adding.length());
-//            }
-//        }
-//        for (Contact contact : contacts) {
-//            double nums = newNumber;
-//            nums = contact.getPhoneNumber();
-//            for(int i = 5; i < nums; i++){
-//                System.out.println((i + 1) + ": " + nums);
-//            }
-//            contact.setName();
-//            contact.setPhoneNumber((int) newNumber);
-//        }
-            return true;
-
+//        System.out.print(newContact.printContactList());
+        if (myContact.add(newContact)) {
+            System.out.printf("Successfully added!%n" + newContact + "%n");
+        } else {
+            System.out.println("Contact is already on file.%n" + newContact);
         }
+    }
+
+
+
+
+
+
+
             public static int searchByName () {
                 try {
                     Scanner contactlist = new Scanner("/Users/dezmonemusgrove/IdeaProjects/contacts-manager-project/src/data/contacts.txt");
@@ -179,23 +134,32 @@ public class fileIO {
                 return -1;
             }
 
-            public static void deleteContact () {
+            public static void deleteContact () throws IOException{
+                String directory = "./src/data";
+                String fileName = "contacts.txt";
+                Path contactListPath = Paths.get(directory, fileName);
+                List<String> contact = Files.readAllLines(contactListPath);
+
+
+
                 System.out.println("Enter the name of the contact you want to delete: ");
                 String deleteName = scanner.next();
-                for(int i = 0; i < myContacts.size(); i++){
-                    Contact contact = myContacts.get(i);
-                    if(contact.getName().equals(deleteName)){
-                        myContacts.remove(contact);
-                        System.out.println("Successfully deleted!");
-                    }else{
-                       break;
 
-                    }
+                if(myContact.contains(deleteName)){
+                    Files.write(contactListPath, contact);
+                    System.out.println("Deleting number...%n" + deleteName );
 
+                }else{
+                    System.out.println("That contact doesn't exist...");
                 }
 
 
-            }
+                    }
+
+
+
+
+
 
 
 
@@ -206,33 +170,14 @@ public class fileIO {
                 String directory = "./src/data";
                 String fileName = "contacts.txt";
 
-                Path contactDirectory = Paths.get(directory);
-                Path contactFile = Paths.get(directory, fileName);
-
-//        System.out.println(contactFile);
-
-//            if (Files.notExists(contactDirectory)) {
-//                Files.createDirectories(contactDirectory); //a plural method worked with one
-////            Files.createDirectory(contactDirectory);
-//            }
 //
-//            if (Files.notExists(contactFile)) {
-//                Files.createFile(contactFile);
-//            }
 
                 Path contactListPath = Paths.get(directory, fileName);
-//        System.out.println("contactListPath = " + contactListPath);
-//        System.out.println("Files.exists(contactsListPath) = " + Files.exists(contactListPath));
-
-//        List<String> mainMenuList = Arrays.asList("View Contacts", "Add a New Contact", "Search A Contact By Name", "Delete An Existing Contact", "Exit");
-//        //menuList should be a method
 //
-//        Files.write(contactListPath, mainMenuList);
-//        System.out.println();
 
                 List<String> printList = Files.readAllLines(contactListPath);
 
-//        System.out.println("printList = " + printList);
+
 
 
                 for (int i = 0; i < printList.size(); i++) {
@@ -245,22 +190,16 @@ public class fileIO {
                 printList = Files.readAllLines(contactListPath);
                 System.out.println(printList);
 
-//        for (int i = 0; i < printList.size(); i++) {
-//            System.out.println((i + 1) + ": " + printList.get(i));
+//
             }
-//        }
+
 
 
 
 
     public static void main(String[] args) throws IOException{
 
-//        String directory = "./src/data";
-//        String fileName = "contacts.txt";
-//        Path contactDirectory = Paths.get(directory);
-//        Path contactFile = Paths.get(directory, fileName);
-//        Path contactListPath = Paths.get(directory, fileName);
-//        List<String> printList = Files.readAllLines(contactListPath);
+
 
 
         Scanner scanner = new Scanner(System.in);
@@ -323,47 +262,16 @@ public class fileIO {
 
     }
 
-    private static void addNewContact() throws IOException {
-//        String directory = "./src/data";
-//        String fileName = "contacts.txt";
-//        Path contactDirectory = Paths.get(directory);
-//        Path contactFile = Paths.get(directory, fileName);
-//        Path contactListPath = Paths.get(directory, fileName);
-//        List<String> printList = Files.readAllLines(contactListPath);
 
 
-        ArrayList<Contact> myContacts = new ArrayList<Contact>();
-
-
-        System.out.println("Enter Contact Name.\n");
-        String newName = scanner.next();
-        System.out.println("Please enter phone number.\n");
-        String newNumber = scanner.next(); // had to put number as a string instead of double to work with List<String> printList on line 39.
-        Contact newContact = Contact.createContact(newName, newNumber);
-        myContacts.add(newContact);
-        System.out.print(newContact.printContactList());
-//        System.out.printf("Successfully added!%n" + myContacts);
-
-
-
-
-        try {
-            if (addNewContact(newContact)) {
-                System.out.println("New Contact is Added: " + newName + " | " + newNumber);
-
-            } else {
-                System.out.println("This contact is already on file: " + newName);
-            }
-        } catch (Exception e){
-        System.out.println(e.toString());
 
 
         }
 
 
 
-    }
-}
+
+
 
 
 
