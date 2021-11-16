@@ -1,3 +1,7 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Contact {
@@ -5,6 +9,13 @@ public class Contact {
     private String name;
     private String phoneNumber;
 
+
+    public Contact(String pipDelimitedContact) {
+        String[] contactinfo = pipDelimitedContact.split(" \\| ");
+        System.out.println(contactinfo);
+        this.name = contactinfo[0];
+        this.phoneNumber = contactinfo[1];
+    }
 
     public Contact(String name, String phoneNumber) {
         this.name = name;
@@ -27,20 +38,22 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 
+
+
     //    public void createContact(String name, String phoneNumber){
 //         new Contact (name, phoneNumber);
 //
 //    }
-    ArrayList<String> contactList = new ArrayList<String>();
-
-    public ArrayList<String> getContactList() {
-        return contactList;
-    }
-
-    public void setContact(String name) {
-        contactList.add(name);
-
-    }
+//    ArrayList<String> contactList = new ArrayList<String>();
+//
+//    public ArrayList<String> getContactList() {
+//        return contactList;
+//    }
+//
+//    public void setContact(String name) {
+//        contactList.add(name);
+//
+//    }
 }
 
 
